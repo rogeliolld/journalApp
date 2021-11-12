@@ -1,12 +1,23 @@
-import { getAuth, signInWithPopup } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile,  getAuth, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth'; 
 import { googleAuthProvider  } from '../firebase/firebase-config';
 import { types } from "../types/types"
+import { finishLoading, startLoading } from './ui';
 
 export const startLoginEmailPassword = (email, password) =>{
     return (dispatch) =>{
-        setTimeout(() => {
-            dispatch( login(123, 'Pedro'));
-        }, 3500);
+        dispatch( startLoading() );
+
+        const auth = getAuth();
+            signInWithEmailAndPassword(auth, email, password)
+                .then( ({ user }) => {
+                dispatch( login(user.uid, user.displayName) );
+                dispatch( finishLoading() );
+        }).catch(
+            e =>{
+                console.log(e);
+                dispatch( finishLoading() );
+            }
+        );
     }
 }
 
@@ -17,6 +28,25 @@ export const startGoogleLogin = () =>{
             .then(({user}) =>{
                 dispatch(login(user.uid, user.displayName))
             });
+    }
+}
+
+
+export const startRegisterWithEmailPasswordName = (email, password, name) =>{
+    return (dispatch) => {
+ 
+        const auth = getAuth();
+            createUserWithEmailAndPassword(auth, email, password)
+                .then( async({ user }) => {
+ 
+                await updateProfile( user, { displayName: name });
+
+                dispatch(
+                    login(user.uid, user.displayName)
+                )
+        }).catch(
+            e => console.log(e)
+        );
     }
 }
 
