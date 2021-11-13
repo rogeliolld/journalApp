@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { useForm } from "../../hooks/useForm";
 
@@ -10,7 +10,7 @@ import { startRegisterWithEmailPasswordName } from "../../actions/auth";
 
 export default function RegisterScreen() {
   const dispatch = useDispatch();
-  const { msgError } = useSelector(state => state.ui);
+  // const { msgError } = useSelector(state => state.ui);
 
 
 
@@ -50,14 +50,7 @@ export default function RegisterScreen() {
     <>
       <h3 className="auth__title">Register</h3>
       <form onSubmit={ handleRegistrer }>
-        {
-          msgError &&
-          (
-            <div className="auth__alert-error">
-                { msgError }
-            </div>
-          )
-        }
+        
 
          <input
           type="text"
