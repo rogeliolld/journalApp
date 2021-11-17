@@ -11,7 +11,7 @@ export default function LoginScreen() {
 
   const initialForm = {
     email: 'nando@gmail.com',
-    password: '123456'
+    password: '1234567'
 };
   const [ formValues, handleInputChange] = useForm( initialForm );
   const {email, password} = formValues;
