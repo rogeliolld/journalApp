@@ -1,30 +1,49 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { activeNote } from '../../actions/notes';
 
-export default function JournalEntry() {
+export default function JournalEntry({ id, date, title, body, url}) {
+
+    const noteDate = moment(date);
+    const dispatch = useDispatch();
+
+    const handleEntryClick = () =>{
+        dispatch( 
+            activeNote( id, {
+                date, title, body, url
+            })
+        );
+    }
+
     return (
-        <div className='journal__entry'>
-            <div 
-                className='journal__entry-picture'
-                style={{
-                    backgroundSize: 'cover',
-                    backgroundImage: 'url(https://www.ngenespanol.com/wp-content/uploads/2018/08/La-primera-imagen-de-la-historia.jpg)',
-                }}
-            >
-
-            </div>
+        <div 
+            className='journal__entry'
+            onClick={ handleEntryClick }
+        >
+           { 
+               url &&
+                <div 
+                    className='journal__entry-picture'
+                    style={{
+                        backgroundSize: 'cover',
+                        backgroundImage: `url(${url})`,
+                    }}>
+                </div>
+            }
 
             <div className='journal__entry-body'>
                 <p className='journal_entry-title'>
-                    Un nuevo día
+                    { title }
                 </p>
                 <p className='journal_entry-content'>
-                    lorem
+                    { body }
                 </p>
             </div>
 
             <div className='journal__entry-date-box'>
-                    <span>Monday</span>
-                    <h4>28</h4>
+                    <span>{ noteDate.format('dddd') }</span>
+                    <h4>{ noteDate.format('Do') }</h4>
             </div>
         </div>
     )
