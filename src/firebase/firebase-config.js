@@ -7,34 +7,34 @@ import { GoogleAuthProvider } from 'firebase/auth';
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyAtLVD5FJUTqjQedRcrOjvgpGa0HcECQks",
-    authDomain: "react-app-cursos-f4677.firebaseapp.com",
-    projectId: "react-app-cursos-f4677",
-    storageBucket: "react-app-cursos-f4677.appspot.com",
-    messagingSenderId: "708382602530",
-    appId: "1:708382602530:web:4e3467df52e42ab3a3a17b"
+    apiKey: process.env.REACT_APP_APIKEY,
+    authDomain: process.env.REACT_APP_AUTHDOMAIN,
+    projectId: process.env.REACT_APP_PROJECTID,
+    storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_APPID,
   
   };
 
 
-  const firebaseConfigTesting = {
-    apiKey: "AIzaSyBGKNuqcA5oIEX-YNRI_CQ9-GlcNw6gJHU",
-    authDomain: "redux-demo-e9de5.firebaseapp.com",
-    projectId: "redux-demo-e9de5",
-    storageBucket: "redux-demo-e9de5.appspot.com",
-    messagingSenderId: "283291233954",
-    appId: "1:283291233954:web:402ad8dbb37086980ef1fb"
-  };
+//   const firebaseConfigTesting = {
+//     apiKey: "AIzaSyBGKNuqcA5oIEX-YNRI_CQ9-GlcNw6gJHU",
+//     authDomain: "redux-demo-e9de5.firebaseapp.com",
+//     projectId: "redux-demo-e9de5",
+//     storageBucket: "redux-demo-e9de5.appspot.com",
+//     messagingSenderId: "283291233954",
+//     appId: "1:283291233954:web:402ad8dbb37086980ef1fb"
+//   };
   
-let app = "";
-  if(process.env.NODE_ENV === 'test'){
-    //testing
-    app = initializeApp(firebaseConfigTesting);
+// let app = "";
+//   if(process.env.NODE_ENV === 'test'){
+//     //testing
+//     app = initializeApp(firebaseConfigTesting);
 
-  }else{
-    //dev/prod
-    app = initializeApp(firebaseConfig);
-  }
+//   }else{
+//     //dev/prod
+   const  app = initializeApp(firebaseConfig);
+  // }
   
 // Initialize Firebase
 
