@@ -4,6 +4,7 @@ import LoginScreen from '../components/auth/LoginScreen'
 import RegisterScreen from '../components/auth/RegisterScreen'
 
 export default function AuthRouter() {
+    console.log("AuthRouter");
     return (
         <div className="auth__main">
             <div className="auth__box-container">

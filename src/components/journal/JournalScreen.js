@@ -5,6 +5,7 @@ import NothingSelected from './NothingSelected'
 import Sidebar from './Sidebar'
 
 export default function JournalScreen() {
+    console.log("JournalScreen");
 
     const {active} = useSelector(state => state.notes) 
     return (

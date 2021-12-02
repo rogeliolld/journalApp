@@ -1,86 +1,90 @@
- /**
- * @jest-environment node
- */
-  import React from 'react'
-  import { mount } from 'enzyme'
-  import { Provider } from 'react-redux';
-  import { MemoryRouter } from 'react-router-dom';
+
+describe('Prueba', () => {
+    test('should', () => {
+        
+    })
+    
+})
+
+//   /**
+//   * @jest-environment node
+//   */
+//    import React from 'react'
+//    import { mount } from 'enzyme'
+//    import { Provider } from 'react-redux';
+//    import { MemoryRouter } from 'react-router-dom';
   
-  import configureStore from 'redux-mock-store';
-  import thunk from 'redux-thunk';
+//    import configureStore from 'redux-mock-store';
+//    import thunk from 'redux-thunk';
 
-  import '@testing-library/jest-dom';
+//    import '@testing-library/jest-dom';
   
-  import { act } from '@testing-library/react';
-  import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-
-
-  import { login } from '../../actions/auth';
-  import AppRouter from '../../routers/AppRouter';
-
-  import Swal from 'sweetalert2';
-
-  import 'jsdom-global/register';
-
-
-  
-  jest.mock('sweetalert2', () =>({
-      fire: jest.fn()
-  }));
-  
-  jest.mock('../../actions/auth', () =>({
-      login: jest.fn()
-  }));
-
+//    import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
   
   
-  const middlewares = [thunk];
-  const mockStore = configureStore(middlewares);
+//    import { login } from '../../actions/auth';
+//    import AppRouter from '../../routers/AppRouter';
+//    import { act } from '@testing-library/react';
+
+//    import 'jsdom-global/register';
+
+
   
-  const initState = {
-      auth:{},
-      ui: {
-          loading: false,
-          msgError: null
-      },
-      notes:{
-          active:{
-              id: 'ABC123'
-          },
-          notes:[]
-      }
-  };
+//    jest.mock('../../actions/auth', () =>({
+//        login: jest.fn()
+//    }));
   
-  let store = mockStore(initState);
-  store.dispatch = jest.fn();
+
+  
+  
+//    const middlewares = [thunk];
+//    const mockStore = configureStore(middlewares);
+  
+//    const initState = {
+//      auth: {},
+//      ui: {
+//          loading: false,
+//          msgError: null
+//      },
+//      notes: {
+//          active: {
+//              id: 'ABC',
+//          },
+//          notes: []
+//      }
+//  };
+  
+//    let store = mockStore(initState);
+//    store.dispatch = jest.fn();
    
 
-describe('Pruebas en <AppRouter />', () => {
+//  describe('Pruebas en <AppRouter />', () => {
 
-    test('debe de llamar el login si estoy autenticado', async() => {
+//      test('debe de llamar el login si estoy autenticado', async() => {
         
-        let user;
+//          let user;
 
-        await act(async () => {
+//          await act( async () => {
 
-            const auth = getAuth();
-            const userCred = await signInWithEmailAndPassword(auth, 'test@testing.com', '123456' );  
-            user = userCred.user;
 
-            const wrapper = mount(
-
-                <Provider store={ store }>
-                    <MemoryRouter>
-                        <AppRouter /> 
-                    </MemoryRouter>
-                </Provider>
-
-            );
+//              const auth = getAuth();
+//              const userCred = await signInWithEmailAndPassword(auth, 'test@testing.com', '123456');  
+//              user = userCred.user;
+//              console.log(userCred.user.uid);
+            
+//              const wrapper = mount (
+//                  <Provider store={ store }>
+//                      <MemoryRouter>
+//                          <AppRouter/> 
+//                      </MemoryRouter>
+//                  </Provider> 
+//              );
+            
         
-        });
+//          });
 
-        expect( login ).toHaveBeenCalledWith('nUukB2Dw8sa1DCwVvnvFDMenE1r1', null);
+//          expect( login ).toHaveBeenCalledWith('81C6pzMnjQgr9VEHYw9yacWQmOI2', null);
 
-    });
+//      });
     
-});
+//  });

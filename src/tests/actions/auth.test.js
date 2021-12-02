@@ -72,7 +72,7 @@ describe('Pruebas con las acciones de Auth', () => {
         expect ( actions[1] ).toEqual({
             type: types.login,
             payload: {
-                uid: 'nUukB2Dw8sa1DCwVvnvFDMenE1r1',
+                uid: '81C6pzMnjQgr9VEHYw9yacWQmOI2',
                 displayName: null
             }
         });
